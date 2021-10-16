@@ -127,7 +127,7 @@ input[type='radio'] {
 }
 
 .text__item {
-    width: 300px;
+    width: 100%;
     margin: 0
 }
 
