@@ -1,0 +1,23 @@
+body {
+    position: relative
+}
+
+.container {
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.item {
+    width: 100%
+}
