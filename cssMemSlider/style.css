@@ -10,20 +10,24 @@ body {
     background: #25282a;
 }
 
+input[type='radio'] {
+    display: none;
+}
+
 .container {
-    width: min(36rem, calc(100% - 20px));
+    width: min(45rem, calc(100% - 20px));
     margin: 100px auto 0; 
     display: grid;
     grid-template-columns: 3fr 2fr;
     grid-template-areas: 
-        'meme meme' 
+        'slider slider'
         'text pagination';
-    gap: 10px;
+    gap: 20px;
     overflow: hidden;
 }
 
 .slider {
-    grid-area: meme;
+    grid-area: slider;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -34,7 +38,7 @@ body {
     transition: all 0.5s ease-in-out
 }
 
-.item {
+.slider__item {
     width: 100%;
     border-radius: 10px
 }
@@ -45,60 +49,109 @@ body {
     justify-content: flex-end;
 }
 
-.button {
+.pagination label {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 36px;
     height: 36px;
-    border: none;
-    outline: none;
-    padding: 10px;
+    padding: 8px;
     box-sizing: border-box;
     cursor: pointer;
-    background-color: rgba(0,0,0,0);
 }
 
-.button div {
+.pagination label div {
     width: 100%;
     height: 100%;
-    border: none;
-    background-color: #71abfe;
-    border: 3px solid #71abfe;
-    box-sizing: border-box;
     border-radius: 100px;
+    border: 10px solid #71abfe;
+    box-sizing: border-box;
+    transition: all .2s ease;
 }
 
-.button:hover div {
-    background-color: rgba(0,0,0,0);
-    transition: .25s ease;
+.pagination label:hover div {
+    border-color: #ffffff;
 }
 
-.button_active div {
-    background-color: #ffffff;
-    border: 3px solid #ffffff;
-}   
+.pagination label:active div {
+    border-color: #ff0000;
+}
 
-.button_active:hover div {
-    background-color: rgba(0,0,0,0);
-    transition: .25s ease;
+#item0:checked ~ .pagination .label0 div {
+    border-width: 4px;
+}
+#item1:checked ~ .pagination .label1 div {
+    border-width: 4px;
+}
+#item2:checked ~ .pagination .label2 div {
+    border-width: 4px;
+}
+#item3:checked ~ .pagination .label3 div {
+    border-width: 4px;
+}
+#item4:checked ~ .pagination .label4 div {
+    border-width: 4px;
+}
+
+
+#item0:checked ~ .slider {
+    left: 0%;
+}
+#item1:checked ~ .slider {
+    left: -100%;
+}
+#item2:checked ~ .slider {
+    left: -200%;
+}
+#item3:checked ~ .slider {
+    left: -300%;
+}
+#item4:checked ~ .slider {
+    left: -400%;
+}
+
+.text-container {
+    width: calc(100% / 1);
+    overflow: hidden;
 }
 
 .text {
     grid-area: text;
+    display: grid;
+    grid-template-columns: repeat(5, 100%);
+    position: relative; 
     margin: 0;
     color: white;
     font-size: 2rem;
-    animation: show 1s
+    transition: all .5s cubic-bezier(1,0,0,1);
 }
 
-.text_disabled {
-    opacity: 0;
-    animation: hide .2s
+.text__item {
+    width: 300px;
+    margin: 0
+}
+
+#item0:checked ~ .text-container > .text {
+    left: 0%;
+}
+#item1:checked ~ .text-container > .text {
+    left: -100%;
+}
+#item2:checked ~ .text-container > .text {
+    left: -200%;
+}
+#item3:checked ~ .text-container > .text {
+    left: -300%;
+}
+#item4:checked ~ .text-container > .text {
+    left: -400%;
 }
 
 @media (max-width: 520px) {
     .container {
         grid-template-columns: 1fr;
         grid-template-areas: 
-        'meme' 
+        'slider' 
         'pagination'
         'text';
         overflow: hidden;
