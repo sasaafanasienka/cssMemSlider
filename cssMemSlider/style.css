@@ -1,23 +1,78 @@
 body {
-    position: relative
+    position: relative;
+    background: #25282a
 }
 
 .container {
-    position: relative;
     width: 500px;
-    margin: 0 auto;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: absolute;
-    top: 0;
-    left: 0;
+    margin: 100px auto 0; 
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 
+        'meme meme' 
+        'text pagination';
     overflow: hidden;
 }
 
+.slider {
+    grid-area: meme;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 0 35px 0;
+    transition: all 0.5s ease-in-out
+}
+
 .item {
-    width: 100%
+    width: 100%;
+    border-radius: 10px
+}
+
+.pagination {
+    grid-area: pagination;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 11px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0);
+}
+
+.button div {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #71abfe;
+    border: 4px solid #71abfe;
+    box-sizing: border-box;
+    border-radius: 100px;
+}
+
+.button:hover div {
+    background-color: rgba(0,0,0,0);
+    transition: .25s ease;
+}
+
+.button_active div {
+    background-color: #ffffff;
+    border: 4px solid #ffffff;
+}
+
+.button_active:hover div {
+    background-color: rgba(0,0,0,0);
+    transition: .25s ease;
+}
+
+.text {
+    grid-area: text
 }
